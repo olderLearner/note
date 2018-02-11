@@ -1,0 +1,618 @@
+------------------------------------------------------------------
+修改命令前缀名称,
+http://shigongbo.blog.163.com/blog/static/9760902013326785262/
+修改~/.bashrc文件中的PS1即可
+要让改变立即生效source  ~/.bashrc即可 
+
+------------------------------------------------------------------
+linux 命令行:
+
+tar zcvf path/name.tar.gz path/file  // 压缩
+
+1.zip
+$ zip -r myfile.zip ./*
+将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,
+－r表示递归压缩子目录下所有文件.
+
+2.unzip
+$ unzip -o -d /home/sunny myfile.zip
+把myfile.zip文件解压到 /home/sunny/
+-o:不提示的情况下覆盖文件；
+-d:-d /home/sunny 指明将文件解压缩到/home/sunny目录下；
+
+3.其他
+$ zip -d myfile.zip smart.txt
+删除压缩文件中smart.txt文件
+$ zip -m myfile.zip ./rpm_info.txt
+向压缩文件中myfile.zip中添加rpm_info.txt文件
+
+4. 分卷合并
+zip -s 0 android-cts.zip --out cts.zip
+-s 0  // 命令
+android.zip   // 合并对象
+--out  // 输出命令
+cts.zip    // 输出文件
+
+------------------------------------------------------------
+history |grep "pattern"  筛选历史记录
+
+df                 // linux 查看系统分区命令
+mount
+
+------------------------------------------------------------
+PuTTY : 远程登陆工具 ,  可以用来远程管理Linux 系统. 
+使用ssh 登陆远端电脑,  用户名 + 密码.   byobu 远端和本地 同步显示, 
+Byobu 终端分屏工具.   
+Ubuntu 源
+
+-------------------------------------------------------------
+chown   change ower
+
+drwxrwxr-x 4 fengxiaojun fengxiaojun 4096 10月 26 16:20 ./
+drwxrwxr-x 3 fengxiaojun fengxiaojun 4096 10月 26 16:20 ../
+drwxr-xr-x 2 root        root        4096 10月 26 16:20 heads/
+drwxrwxr-x 4 fengxiaojun fengxiaojun 4096 10月 21 10:05 remotes/
+:~/workspace/tcl01/frameworks/base/.git/logs/refs$ sudo chown -R fengxiaojun:fengxiaojun .
+
+sudo chown -R fengxiaojun:fengxiaojun .git 
+将指定文件的拥有者改为指定的用户或组
+改变文件的用户级别 root to  fengxiaojun 
+
+chmod +x filename
+chmod -x filename
+sudo chown -R fxj:fxj flie
+
+
+---------------------------------------------------------------
+更改命令行 修改默认编辑器
+http://blog.csdn.net/ljchlx/article/details/8248255
+sudo update-alternatives --config editor
+
+
+---------------------------------------------------------------
+dpkg -l |grep **     // 列出当前系统所安装的应用.
+which [application]  // 列出所指定应用安装位置.
+
+sudo apt-get install -f   //force to intall package
+sudo dpkg -i ***.deb      // install package
+
+apt-get autoremove        //
+
+卸载程序和所有配置文件。在终端中输入以下命令，把<programname>替换成你希望完全移除的程序：
+sudo apt-get --purge remove <programname>  // 移除
+只卸载程序。如果你移除程序但保留配置文件，请输入以下命令：
+sudo apt-get remove <programname>
+
+
+1:
+apt-get update 
+apt-cache search java | awk '{print($1)}' | grep -E -e '^(ia32-)?(sun|oracle)-java' -e '^openjdk-' -e '^icedtea' -e '^(default|gcj)-j(re|dk)' -e '^gcj-(.*)-j(re|dk)' -e 'java-common' | xargs sudo apt-get -y remove
+apt-get -y autoremove
+2:
+dpkg -l | grep ^rc | awk '{print($2)}' | xargs sudo apt-get -y purge 
+3:
+bash -c 'ls -d /home/*/.java' | xargs sudo rm -rf
+4:
+rm -rf /usr/lib/jvm/* 
+
+After this operation, 80.2 MB disk space will be freed.
+(Reading database ... 206423 files and directories currently installed.)
+Removing openjdk-7-jdk:amd64 (7u91-2.6.3-0ubuntu0.14.04.1) ...
+Removing default-jre (2:1.7-51) ...
+Removing openjdk-7-jre:amd64 (7u91-2.6.3-0ubuntu0.14.04.1) ...
+Removing libatk-wrapper-java-jni:amd64 (0.30.4-4) ...
+Removing default-jre-headless (2:1.7-51) ...
+Removing openjdk-7-jre-headless:amd64 (7u91-2.6.3-0ubuntu0.14.04.1) ...
+update-alternatives: warning: /etc/alternatives/java has been changed (manually or by a script); switching to manual updates only
+Removing oracle-java8-set-default (8u66+8u65arm-1~webupd8~1) ...
+Removing libatk-wrapper-java (0.30.4-4) ...
+Removing ca-certificates-java (20130815ubuntu1) ...
+Removing oracle-java8-installer (8u66+8u65arm-1~webupd8~1) ...
+------------------------------------------------------------------------------------------------------------------------
+
+find . -name .repo -prune -o -name .git -prune -o -path ./out -prune -o -type f  -print0 | xargs -0 grep --color -n "$@"
+.      //当前目录
+-name  // 名字
+-name .repo -prune = -name .repo -a -prune
+-o     // 或
+
+find -name 'x.log' -print0 | xargs -0
+
+find -type //查找某一类型文档
+
+find $(OUT_DIR) -type f -name "IGTalkSession*" -print0 | xargs -0 rm -f
+find . -type f -name ''*.mk'' | xargs grep -rn ''module name'' –exclude-dir=.git
+
+b:块设备文档
+d:目录
+c:字符设备文档
+P：管道文档
+l:符号链接文档
+f:普通文档
+
+这里先列出grep常用的命令行选项：
+    -c    只显示有多少行匹配，而不具体显示匹配的行。
+    -h    不显示文件名。
+    -i    在字符串比较的时候忽略大小写。
+    -l    只显示包含匹配模板的行的文件名清单。
+    -L    只显示不包含匹配模板的行的文件名清单。
+    -n    在每一行前面打印改行在文件中的行数。
+    -v    反向检索，只显示不匹配的行。
+    -w    只显示完整单词的匹配。
+    -x    只显示完整行的匹配。
+    -r/-R 如果文件参数是目录，该选项将递归搜索该目录下的所有子目录和文件。
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+shell 
+设置文字颜色:
+http://www.jb51.net/article/43968.htm
+echo -e "\033[31m Sucessed \033[0m"
+
+-------------------------------------------
+
+-------------------------------------------
+error
+E:Encountered a section with no Package: header, E:Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_natty_main_binary-i386_Packages
+
+在网上搜到了解决办法，现在记录下来，以便今后查阅：
+终端中输入以下两条命令：
+
+sudo rm /var/lib/apt/lists/* -vf
+sudo apt-get update
+
+执行完了命令之后，软件更新器应该会自动要求更新的，更新便是
+
+---------------------------------------
+file check system 失败:
+http://bbs.51cto.com/thread-807645-1.html
+手动运行 fsck , 根据提示 手动check分区
+16.04
+fsch.ext4 -y /dev/sda4
+
+-----------------------------------------
+Text file busy 
+查看制定文件或程序 被使用的进程,  top |grep xxx   eg: top | grep adb 
+kill -9 PID ,  // 将进程杀死.  
+
+
+-----------------------------------------
+terminal 自动关机/重启
+sudo shutdown -h now(+100) // 现在立刻关机(100min 后)
+sudo shutdown -r now(+100)(23:29) //现在立刻重启(100min 后)(23:29 时间重启)
+sudo shutdown -r 23:29 & // 重启任务放到后台, 用户可以继续操作终端. 
+
+ctrl + c 中止命令 
+
+-------------------------------------------------------------------------------------------
+Ubuntu enviroment
+
+sudu chown -R fxj:fxj file.
+
+1) replace source
+sources.list   // location
+etc/apt/sources.list
+
+lsusb
+Bus 001 Device 005: ID 18d1:4ee7 Google Inc.
+                       vid : pid 
+sudo vim /etc/udev/rules.d/51-android.rules
+
+  1 SUBSYSTEM=="usb", ATTR{idVendor}=="2717", MODE="0666" GROUP="plugdev"
+  2 SUBSYSTEM=="usb", ATTR{idVendor}=="1bbb", MODE="0666" GROUP="plugdev"
+  3 SUBSYSTEM=="usb", ATTR{idVendor}=="05c6", MODE="9091" GROUP="plugdev"
+  4 SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666" GROUP="plugdev"
+
+move rules.d 
+etc/udev/rules.d 
+
+restart udev  //重启uden 服务
+sudo service udev restart
+
+
+submit -> /home/fengxiaojun/.PatchDeliveryTool/pdc_tools/patch-delivery-gui_NB
+.PatchDeliveryTool/
+-------------------------
+install sogou
+sudo apt-get remove xxx (appllication)
+dpkg -l | grep fcitx                     // check whether this appllication was installed
+sudo apt-get install fcitx libssh2-1     // 
+sudo dpkg -i sogou.deb                   // install sogou
+
+settings -> language support -> keyboard input method system , select : fcitx
+reboot system.
+-------------------------
+
+ps -aux | grep skype
+kill -9 pid
+
+-------------------------------------
+config android studio
+1)
+tool -> create DeskTop Entry   // 加到 dash 面板
+2)
+create desktop icon
+create file AndroidStudio.desktop :
+-------------------------------------
+[Desktop Entry]
+Version=2.1.3
+Type=Application
+Name=Android Studio
+Exec="/home/fxj/software/android-studio/bin/studio.sh" %f
+Icon=/home/fxj/software/android-studio/bin/studio.png
+Categories=Development;IDE;
+Terminal=false
+StartupNotify=true
+StartupWMClass=jetbrains-android-studio
+Name[en_GB]=android-studio.desktop
+-------------------------------------
+安装 oracle jdk 8
+ubuntu 不能通过apt-get install 安装，需要到 oracle 下载压缩包，
+解压到 /usr/lib/jvm， 设置环境变量
+ 32 export JAVA_HOME=/usr/lib/jvm/jdk1.8.0_111
+ 33 export JRE_HOME=${JAVA_HOME}/jre
+ 34 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib
+ 35 export PATH=${JAVA_HOME}/bin:$PATH
+
+安装：
+sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_75/bin/java 1
+sudo update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_75/bin/javac 1
+sudo update-alternatives --install /usr/bin/javaws javaws /usr/lib/jvm/jdk1.7.0_75/bin/javaws 1
+
+sudo update-alternatives --help // 查看帮助文档
+
+
+
+--------------------------------------
+查看内核版本
+cat /proc/version
+Linux version 4.4.0-83-generic (buildd@lgw01-10) (gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04.3) ) #106~14.04.1-Ubuntu SMP Mon Jun 26 18:10:19 UTC 2017
+
+uname -a
+Linux fxj 4.4.0-83-generic #106~14.04.1-Ubuntu SMP Mon Jun 26 18:10:19 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+uname -r
+4.4.0-83-generic
+
+------------------------------------------------------------------------------
+Linux shell 判断表达式
+文件比较运算符
+-e filename 	如果 filename存在，则为真 	[ -e /var/log/syslog ]
+-d filename 	如果 filename为目录，则为真 	[ -d /tmp/mydir ]
+-f filename 	如果 filename为常规文件，则为真 	[ -f /usr/bin/grep ]
+-L filename 	如果 filename为符号链接，则为真 	[ -L /usr/bin/grep ]
+-r filename 	如果 filename可读，则为真 	[ -r /var/log/syslog ]
+-w filename 	如果 filename可写，则为真 	[ -w /var/mytmp.txt ]
+-x filename 	如果 filename可执行，则为真 	[ -L /usr/bin/grep ]
+filename1-nt filename2 	如果 filename1比 filename2新，则为真 	[ /tmp/install/etc/services -nt /etc/services ]
+filename1-ot filename2 	如果 filename1比 filename2旧，则为真 	[ /boot/bzImage -ot arch/i386/boot/bzImage ]
+字符串比较运算符 （请注意引号的使用，这是防止空格扰乱代码的好方法）
+-z string 	如果 string长度为零，则为真 	[ -z "$myvar" ]
+-n string 	如果 string长度非零，则为真 	[ -n "$myvar" ]
+string1= string2 	如果 string1与 string2相同，则为真 	[ "$myvar" = "one two three" ]
+string1!= string2 	如果 string1与 string2不同，则为真 	[ "$myvar" != "one two three" ]
+算术比较运算符
+num1-eq num2 	等于	[ 3 -eq $mynum ]
+num1-ne num2 	不等于	[ 3 -ne $mynum ]
+num1-lt num2 	小于	[ 3 -lt $mynum ]
+num1-le num2 	小于或等于	[ 3 -le $mynum ]
+num1-gt num2 	大于	[ 3 -gt $mynum ]
+num1-ge num2 	大于或等于	[ 3 -ge $mynum ]
+
+if test ! -h ../../Home
+这是一个判断表达式
+用 man test 查看 test 命令的帮助：
+-h FILE
+              FILE exists and is a symbolic link (same as -L)
+              文件存在并且是一个字符链接（与-L选项相同)
+ 
+! EXPRESSION
+              EXPRESSION is false
+              表达式为false，即“非”操作（“取反”操作
+------------------------------------------------------------------------------
+
+前面的工作
+安装ssh
+1、使用 which 命令查看是否安装了ssh
+
+ which ssh
+2 which sshd
+Ubuntu 缺省已经安装了ssh client 但没有安装 ssh server。
+ 
+2、使用 apt-get 安装：
+Ubuntu 之所以好用，就是因为它继承了 debian 的 apt 系统，但是 apt 需要依赖网络。
+ sudo apt-get install openssh-server
+Ubuntu 会自动下载并安装 openssh server，并一并解决所有的依赖关系，安装完成以后自动启动服务。
+ 
+3、更改 ssh server 配置
+SSH 服务中，所有的内容都是加密传输的，安全性基本有保证。但是如果能使用证书认证的话，安全性将会更上一层楼，而且经过一定的设置，还能实现证书认证自动登录的效果。修改配置文件 /etc/ssh/sshd_config 以更改 ssh server 的配置，开启证书认证选项：
+ RSAAuthentication yes
+2 PubkeyAuthentication yes
+3 AuthorizedKeysFile %h/.ssh/authorized_keys
+保存后重启ssh服务：
+ sudo /etc/init.d/ssh restart #重新启动 
+2 #sudo /etc/init.d/ssh start #启动 
+3 #sudo /etc/init.d/ssh stop #停止
+修改完成后重新启动 ssh 服务。
+ 
+4、为 ssh 用户建立私钥和公钥
+既然是为用户创建私钥和公钥，当然要登录到需要建立密钥的账户下（如hadoop用户），然后运行：
+ ssh-keygen -t rsa
+这里，我们将生成的 key 存放在默认目录下（~/.ssh/）即可。建立的过程中会提示输入 passphrase，这相当于给证书加个密码，也是提高安全性的措施，这样即使证书不小心被人拷走也不怕了。当然如果这个留空的话，即可实现客户端通过证书认证的自动登录。
+ 
+ssh-keygen 命令会生成两个密钥：私钥 id_rsa 和公钥 id_rsa.pub，如果不存在 ~/.ssh/authorized_keys 文件，则直接公钥 id_rsa.pub 文件重命名，如果已经存在 ~/.ssh/authorized_keys 文件，则将公钥 id_rsa.pub 文件的内容追加上即可：
+ mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys #重命名 
+2 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys #追加
+此时即可使用命令
+ ssh localhost
+无密码登录到本机，第一次登录会出现提示，一旦确认了授权以后登录就不会再提示，如下图：
+ 
+当然，仅仅本机登录本机没有任何意义，我们需要从本机无密码登录其他台服务器。将公钥 authorized_keys 从本机拷贝到另台服务器的路径 ~/.ssh 下，即可无密码登录另个服务器端。
+ 
+同样，如果要实现其他机器无密码访问本机，将私钥 id_rsa 拷贝到其他机器的路径 ~/.ssh 下即可。
+ 
+
+ 
+
+ 
+1、安装 java jdk1.8
+1. 添加软件源
+sudo add-apt-repository ppa:webupd8team/java
+2. 更新软件源
+sudo apt-get update
+3. 安装 jdk1.8
+sudo apt-get install oracle-java8-installer
+2、查看 java 安装路径
+sudo update-alternatives --config java
+
+sudo update-alternatives --config javac
+
+3、查看 java 安装后的版本
+java -version
+ps：更新 jdk1.7 到 jdk1.8 直接执行安装第一步覆盖就ok.
+
+4、增加多版本 jdk 和切换方法 （安装 jdk 6 或 7）
+1、安装 jdk 6 和 jdk 7
+安装 jdk 6
+
+sudo apt-get install oracle-java6-installer
+安装 jdk 7
+
+sudo apt-get install oracle-java7-installer
+2、查看所有 jdk 安装版本
+sudo update-java-alternatives -ljava6-oracle 3 /usr/lib/jvm/java6-oraclejava7-oracle  /usr/lib/jvm/java7-oraclejava8-oracle 2 /usr/lib/jvm/java8-oracle
+
+3、通过-s参数可以方便的切换到其它的java版本
+$ sudo update-java-alternatives -s java6-oracle
+
+or
+
+$ sudo update-java-alternatives -s java7-oracle
+
+or
+
+$ sudo update-java-alternatives -s java8-oracle
+
+再次查看 java jkd 版本
+
+$ java -version
+
+java version string 1.6.0_45"Java(TM) SE Runtime Environment (build 1.6.0_45-b06)Java HotSpot(TM) 64-Bit Server VM (build 20.45-b01, mixed mode)
+
+最后设置环境变量
+
+Linux 下设置环境变量的方法有多种：
+/etc/environment 用于设置整个系统的环境，与登录用户无关 
+/etc/profile 用于所有用户的环境，登录时执行 
+~/.profile 用于设置当前用户的环境，登录时执行 
+~/.bashrc 专用于当前用户的bash shell的bash信息，每次打开新的shell时，该该文件被执行 
+登陆系统时shell读取的顺序是：/etc/profile → /etc/enviroment → ~/.profile → ~/.env(如果存在)，所以 export LANG=zh_CN 加入 /etc/profile 时登录提示显示英文，而将 LNAG=zh_CN  加入 /etc/environment 时登录提示显示中文。
+ 
+4.1、在文件 /etc/environment 中添加以下内容以设置系统环境变量：
+ PATH="…:/usr/app/jdk1.6/bin"
+2 CLASSPATH=".:/usr/app/jdk1.6/lib"
+3 JAVA_HOME="/usr/app/jdk1.6"
+保存后使用 source 命令使之生效：
+ source /etc/environment
+ 
+4.2、在文件 /etc/profile 中添加以下内容修改所有用户的 环境变量：
+ export JAVA_HOME=/usr/app/jdk1.6 
+2 export JRE_HOME=${JAVA_HOME}/jre 
+3 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
+4 export PATH=${JAVA_HOME}/bin:$PATH
+保存后使用 source 命令使之立即生效：
+ source /etc/profile
+~/.profile 和 ~/.bashrc 文件的修改与此相同。
+ 
+4.3、直接在shell下执行以下命令临时设置变量：
+ export JAVA_HOME=/usr/app/jdk1.6 
+2 export JRE_HOME=${JAVA_HOME}/jre 
+3 export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib 
+4 export PATH=${JAVA_HOME}/bin:$PATH
+此这种方法仅是临时使用，每次打开shell时又要重新设置，比较麻烦。
+ 
+5、配置默认的java解释器和编译器
+如果系统中安装了多个jdk，为了使默认使用的是我们安装的jdk，还要分别执行如下命令设置默认的jdk：
+ #添加一个 java 和 javac 命令的link值 
+2 sudo update-alternatives --install /usr/bin/java java /usr/app/jdk1.6/bin/java 300 
+3 sudo update-alternatives --install /usr/bin/javac javac /usr/app/jdk1.6/bin/javac 300 
+4 #给 java 和 javac 命令选择一个link值 
+5 sudo update-alternatives --config java 
+6 sudo update-alternatives --config javac
+ 
+6、配置JVM的优先级
+在文件 /etc/jvm 的顶部添加
+ /usr/app/jdk1.6
+ 
+7、执行以下命令测试安装是否成功
+ java -version
+就会显示系统使用的jdk是我们刚才安装的jdk，如下图：
+ 
+ 
+安装tomcat
+1、首先下载 tomcat 安装程序
+当前最新的 tomcat6 版本为6.0.36，将下载的 tomcat 压缩包 apache-tomcat-6.0.36.tar.gz 放置于路径/tmp/ 下。
+ 
+2、解压到指定目录
+ sudo tar zxf /tmp/apache-tomcat-6.0.36.tar.gz -C /usr/app/ 
+2 sudo mv /usr/app/apache-tomcat-6.0.36/ /usr/app/tomcat6
+ 
+3、设置环境变量
+修改脚本 tomcat6/bin/catalina.sh ，在文件的起始位置添加以下内容：
+ JAVA_HOME=/usr/app/jdk1.6 
+2 JAVA_OPTS='-Xms128M -Xmx512M -XX:MaxNewSize=256m -XX:MaxPermSize=256m'
+设定环境变量 JAVA_HOME ，以及启动参数：
+-Xms：jvm初始内存 
+-Xmx：jvm最大内存 
+-XX:MaxNewSize：新生代占整个堆内存的最大值 
+-XX:MaxPermSize：Perm（俗称方法区）占整个堆内存的最大值 
+至此，tomcat6 已安装完毕，可使用命令
+ sudo /usr/app/tomcat6/bin/startup.sh 
+2 sudo /usr/app/tomcat6/bin/shutdown.sh
+启动和关闭 tomcat 程序，
+ 
+启动 tomcat 后浏览器访问<a target=_blank href="http://localhost:8080">http://localhost:8080</a>即可看到tomcat页面。
+ 
+事实上，环境变量 JAVA_HOME 已经在 /etc/envirment 中设定，若 catalina.sh 中没有设定依然报错，无法启动tomcat，如下图，原因未知。
+ 
+ 
+4、设置Tomcat管理员帐号
+tomcat 的用户帐号信息都保存在文件 tomcat6/conf/tomcat-users.xml 中，在标签 <tomcat-users> 中添加
+ <user username="tomcat" password="tomcat" roles="admin,manager"/>
+即可添加用户名和密码为 tomcat 的管理员账号，可在 web 中登录管理。
+ 
+安装MySQL
+ 
+1、首先下载 MySQL 安装文件
+MySQL 官方放出的版本比较多，但没有针对 ubuntu 的版本，所以只能选择二进制分发版和源码分发版。MySQL 二进制分发版的文件名格式为 mysql-version-os.tar.gz，其中 version 是版本号(如 5.6.11)，os表示分发版安装的操作系统类型(如 linux-glibc2.5-i686)，本文以 mysql-5.6.11-linux-glibc2.5-i686.tar.gz 为例，下载后放置于路径 /tmp/ 下。
+ 
+网络配置
+1、首先配置网卡的网络地址等信息
+在文件 /etc/network/interfaces 中添加内容：
+ auto eth0 
+2 iface eth0 inet static 
+3 address 192.168.16.110 
+4 netmask 255.255.252.0 
+5 gateway 192.168.16.1
+IP 地址根据具体情况修改。当然，如果服务器使用的是 DHCP 来分配 IP 地址，只需要写上
+ iface eth0 inet dhcp
+即可，无需设置 address/netmask/gateway。若有多个网卡，则依次配置eth0、eth1等。
+ 
+2、然后修改 DNS 服务器
+修改文件 /etc/resolv.conf ，添加 DNS 服务器地址：
+ nameserver 202.96.209.5 
+2 nameserver 202.113.16.11
+ 
+3、完成后，重新启动 networking 服务
+ sudo /etc/init.d/networking restart
+这样应该就可以连通网络了，如果使用的是 ADSL，可能还需要装上 pppoe 之类的东西。</p>
+------------------------------------------------------------------------------
+Linux 
+screen 命令:
+远程登录其他电脑, 断开链接后可以继续运行本机执行的命令.
+screen   // 启动新窗口
+make droid flashfiles -j8 > build.log &(后台运行) // 执行命令
+exit // 退出terminal
+Done
+
+------------------------------------------------------------------------------
+Linux 
+/dev/          // 设备节点  
+crw-rw----   1 root dialout   4,         86        11月  6 09:00 ttyS22
+  权限         group user    主设备号 次设备号                   设备名称
+// 用户空间可用的节点
+
+mknod("/dev/kmsg", S_IFCHR | 0600, makedev(1, 11));
+// 创建设备节点, 需要指定dev的主次设备号
+makedev() 方法需要学习.
+c // 字符设备
+b // 块设备
+对于字符设备, 次设备号就是 设备类型相同的不同设备.
+/dev/devices里面记录现有的设备 
+
+------------------------------------------------------------------------------
+find -L  src -name "*.java" -and -not -name ".*"
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

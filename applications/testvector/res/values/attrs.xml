@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ButtonSwitch">
+        <attr name="distance" format="integer" />
+        <attr name="icon" format="integer" />
+        <attr name="icon_selected" format="reference|integer" />
+        <attr name="icon_size" format="integer" />
+        <attr name="status" format="boolean" />
+        <attr name="text" format="string" />
+        <attr name="text_color" format="reference|color" />
+        <attr name="text_color_selected" format="reference|color" />
+        <attr name="text_size" format="integer" />
+    </declare-styleable>
+
+</resources>

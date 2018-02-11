@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!--
+Copyright (C) 2014 The Android Open Source Project
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+        android:width="100.0dp"
+        android:height="100.0dp"
+        android:viewportWidth="108.0"
+        android:viewportHeight="108.0">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M28.46,83.664h21.973l0.115,5.303l13.387-8.039l0.524-0.264h-36V83.664z M78.38,44.664v-5.96 c0-2.864-2.32-5.184-5.184-5.184h-8.217l-4.744-5.184H44.684L39.94,33.52h-8.216c-2.864,0-5.184,2.32-5.184,5.184v31.104 c0,2.863,2.32,5.184,5.184,5.184H62.46V62.498c-2.378,2.881-5.976,4.719-10,4.719c-7.154,0-12.96-5.808-12.96-12.961 c0-7.154,5.806-12.96,12.96-12.96c4.756,0,8.904,2.574,11.159,6.397c1.231-1.825,3.325-3.029,5.698-3.029H78.38z M87.46,47.664h-16 c-3.311,0-6,2.689-6,6v32c0,3.311,2.689,6,6,6h16c3.311,0,6-2.689,6-6v-32C93.46,50.354,90.771,47.664,87.46,47.664z M83.46,87.664 h-8v-2h8V87.664z M89.96,81.664h-21v-28h21V81.664z M44.166,54.256c0,4.582,3.713,8.295,8.294,8.295 c4.582,0,8.295-3.713,8.295-8.295c0-4.581-3.713-8.294-8.295-8.294C47.879,45.962,44.166,49.675,44.166,54.256z"/>
+</vector>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <color name="bg">#ff1a1a1a</color>
+    <color name="button_switch_text">#ffcccccc</color>
+    <color name="button_switch_text_selected">#ff50e3c2</color>
+    <color name="colorAccent">#ffff4081</color>
+    <color name="colorPrimary">#ff3f51b5</color>
+    <color name="colorPrimaryDark">#ff303f9f</color>
+    <color name="seek_bar_bg">#ff4d4d4d</color>
+    <color name="seek_bar_bg_pro">#ff4fb59e</color>  
+</resources>

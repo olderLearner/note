@@ -1,0 +1,16 @@
+#include <stdio.h>
+int main() {
+
+  short a = 10;
+  int b = 100;
+  long c = 1000;
+  char d = 'X';
+
+  int a_l = sizeof a;
+  int b_l = sizeof b;
+
+  printf("short int length = %d, int length = %d, long int length = %d, char length = %d\n", a_l, b_l, (int) sizeof(c), (int) sizeof(char));
+
+  return 0;
+
+}

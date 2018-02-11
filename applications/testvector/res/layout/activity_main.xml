@@ -1,0 +1,202 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.testvector.MainActivity" >
+
+    <!--
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_screenshot_share" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_otg_storage" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_otg_storage1" />
+    -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="OTG Normal"
+        android:visibility="gone" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#000"
+        android:src="@drawable/ic_otg_storage_orignal"
+        android:visibility="gone" />
+    <!--
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="OTG Charging" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#000"
+        android:src="@drawable/ic_otg_charging" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="OTG Camera" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="#000"
+        android:src="@drawable/ic_otg_camera" />
+    -->
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result: "
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testDstZoneWithNonDstTimestampForNonHourDstZone"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result2: "
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testNonDstZoneWithDstTimestampForNonHourDstZone"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result3: "
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testDstZoneNameWithNonDstTimestamp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="result4: "
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="testNonDstZoneNameWithDstTimestamp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MediaCodecsList" />
+            
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="testMusicMute" />
+        </LinearLayout>
+    </ScrollView>
+        <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_mobile_data" style="@style/button_switch_base"
+        icon="@drawable/icon_data_close" icon_selected="@drawable/icon_data_open"
+        text="@string/mobile_data" />
+    <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_wifi" style="@style/button_switch_base"
+        android:layout_marginLeft="@dimen/bs_line_distance" android:layout_toRightOf="@id/bs_mobile_data"
+        icon="@drawable/icon_wifi_close" icon_selected="@drawable/icon_wifi_open"
+        text="@string/wifi" />
+    <!-- Note 
+    customized attrs need domain 
+    eg: android:id , android is domain.
+    R.styleable.icon_selected is customized attrs , it need specify the domain eg xxx:icon_selected.
+    How to clarify the customized domain: 
+    eg: xmlns:android="http://schemas.android.com/apk/res/android"  this is android domain.
+    xmlns:app="http://schemas.android.com/apk/res-auto"   app is the customized domain for this attrs.
+     -->
+    <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_fm" style="@style/button_switch_base"
+        android:layout_below="@id/bs_mobile_data" android:layout_marginTop="@dimen/bs_raw_distance"
+        icon="@drawable/icon_fm_close" icon_selected="@drawable/icon_fm_open"
+        text="@string/fm" />
+    <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_bluetooth" style="@style/button_switch_base"
+        android:layout_below="@id/bs_mobile_data" android:layout_marginLeft="@dimen/bs_line_distance"
+        android:layout_marginTop="@dimen/bs_raw_distance" android:layout_toRightOf="@id/bs_mobile_data"
+        icon="@drawable/icon_bt_close" icon_selected="@drawable/icon_bt_open"
+        text="@string/bluetooth" />
+    <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_ap" style="@style/button_switch_base"
+        android:layout_below="@id/bs_fm" android:layout_marginTop="@dimen/bs_raw_distance"
+        icon="@drawable/icon_ap_close" icon_selected="@drawable/icon_ap_open"
+        text="@string/ap" />
+    <com.example.testvector.ButtonSwitch
+        android:id="@+id/bs_voice" style="@style/button_switch_base"
+        android:layout_below="@id/bs_fm" android:layout_marginLeft="@dimen/bs_line_distance"
+        android:layout_marginTop="@dimen/bs_raw_distance" android:layout_toRightOf="@id/bs_ap"
+        icon="@drawable/icon_voice_close" icon_selected="@drawable/icon_voice_open"
+        text="@string/voice_limit" />
+
+</LinearLayout>
