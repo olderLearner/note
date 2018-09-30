@@ -1,0 +1,10 @@
+首先用这个宏查询技能在法术书中的编号，比如“冰霜新星”
+/script local s,i,n="冰霜新星",1;while 1 do n=GetSpellName(i,"spell");if n then if strfind(n,s) then jnbh=i;break;end;i=i+1;else break;end;end;SendChatMessage(jnbh)
+将编号代入下面的宏
+/script local s,d=GetSpellCooldown(你的冰环在法术书中的编号,"spell");if d>2 then CastSpellByName("急速冷却");else CastSpellByName("冰霜新星");end;
+要注意的是如果学到了新的技能，比如最近新学了钓鱼那么技能编号会变需要重新查询否则宏会失效
+Goldshire
+Elwynn
+Menethil
+
+
