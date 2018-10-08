@@ -7,4 +7,12 @@ Goldshire
 Elwynn
 Menethil
 
+/script C=CastSpellByName;C("压制");if(UnitHealth("target")<20) then C("斩杀");end;C("致死打击");if(UnitMana("Player")>39) then C("英勇打击");end
 
+/script 
+if UnitCanAttack("target","player")
+then 
+  CastSpellByName("暴风雪");
+else 
+  CastSpellByName("暴风雪(等级 1)");
+end;
