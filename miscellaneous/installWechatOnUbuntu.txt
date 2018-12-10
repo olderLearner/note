@@ -1,0 +1,33 @@
+安装包:
+wine-3.5.tar.gz
+wxwork-2.5.0.3006.tar.gz
+WXWork_2.6.1.1329.exe
+
+1. 安装playonlinux
+sudo apt install playonlinux -y
+安装过程中<ok> 用 'tab'键选择,
+
+2. 软件中心启动playonlinux,在user目录生成:
+.PlayOnLinux/
+PlayOnLinux's virtual drives -> /home/fxj/.PlayOnLinux//wineprefix//
+
+3.cp wxwork-2.5.0.3006.tar.gz PlayOnLinux's virtual drives 
+tar -xf wxwork-2.5.0.3006.tar.gz
+
+4. cp wine-3.5.tar.gz .PlayOnLinux/wine/linux-x86/
+tar -xf wine-3.5.tar.gz
+
+5. 解压WXWork_2.6.1.1329.exe 选择第一个文件夹: 2.6.1.1329 wxwork.exe
+cp PlayOnLinux's virtual drives -> /home/fxj/.PlayOnLinux//wineprefix//
+替换原有的文件
+
+6. 启动playonlinux
+配置-> wxwork -> 概况 -> 自该虚拟盘创建快捷方式 ->选 wxwork.ext 
+
+7. 完成 
+
+
+
+
+
+
