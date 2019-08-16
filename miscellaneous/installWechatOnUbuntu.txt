@@ -4,22 +4,35 @@ wxwork-2.5.0.3006.tar.gz
 WXWork_2.6.1.1329.exe
 
 1. 安装playonlinux
+sudo apt-get update
 sudo apt install playonlinux -y
 安装过程中<ok> 用 'tab'键选择,
 
-2. 软件中心启动playonlinux,在user目录生成:
+2. 软件中心启动playonlinux,在user(/home/fxj)目录生成:
 .PlayOnLinux/
 PlayOnLinux's virtual drives -> /home/fxj/.PlayOnLinux//wineprefix//
 
-3.cp wxwork-2.5.0.3006.tar.gz PlayOnLinux's virtual drives 
-tar -xf wxwork-2.5.0.3006.tar.gz
+drwxrwxr-x 11 fxj  fxj    4096 8月  15 17:06  .PlayOnLinux/
+lrwxrwxrwx  1 fxj  fxj      35 8月  15 17:06 "PlayOnLinux's virtual drives" -> /home/fxj/.PlayOnLinux//wineprefix//
 
-4. cp wine-3.5.tar.gz .PlayOnLinux/wine/linux-x86/
-tar -xf wine-3.5.tar.gz
 
-5. 解压WXWork_2.6.1.1329.exe 选择第一个文件夹: 2.6.1.1329 wxwork.exe
-cp PlayOnLinux's virtual drives -> /home/fxj/.PlayOnLinux//wineprefix//
-替换原有的文件
+3.
+ cp wxwork-2.5.0.3006.tar.gz PlayOnLinux's virtual drives 
+ goto ~/PlayOnLinux's virtual drives
+ tar -xf wxwork-2.5.0.3006.tar.gz
+
+4. 
+ cp wine-3.5.tar.gz .PlayOnLinux/wine/linux-x86/
+ goto  ~/.PlayOnLinux/wine/linux-x86/
+ tar -xf wine-3.5.tar.gz
+
+5. 
+ 解压WXWork_2.6.1.1329.exe 选择第一个文件夹 --> 2.6.1.1329 WXWork.exe Uninstall.exe
+ copy 上述3个内容至 /home/fxj/PlayOnLinux's virtual drives/wxwork/drive_c/Program Files/Tencent/WXWork
+
+drwxrwxr-x 11 fxj  fxj    4096 8月  15 17:47  .PlayOnLinux/
+lrwxrwxrwx  1 fxj  fxj      35 8月  15 17:06 "PlayOnLinux's virtual drives" -> /home/fxj/.PlayOnLinux//wineprefix//
+  PlayOnLinux's virtual drives -> /home/fxj/.PlayOnLinux//wineprefix//
 
 6. 启动playonlinux
 配置-> wxwork -> 概况 -> 自该虚拟盘创建快捷方式 ->选 wxwork.ext 
