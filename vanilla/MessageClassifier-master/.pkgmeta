@@ -1,8 +1,0 @@
-package-as: MessageClassifier
-
-ignore:
-    - .*
-    - *.md
-    - *.sh
-    - doc
-    - script
